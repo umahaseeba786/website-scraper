@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SiteScout – scan a website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="top"><span class="brand">SiteScout</span><span class="tag">Runs on your computer</span></header>
+
+<main>
+  <section class="hero">
+    <h1>Paste a website. See its pages, services, purpose and contact details.</h1>
+    <form id="form" class="scan" novalidate>
+      <label class="sr" for="url">Website address</label>
+      <input id="url" name="url" type="text" inputmode="url" placeholder="https://example.com" autocomplete="off" autofocus>
+      <button id="go" type="submit">Scan website</button>
+    </form>
+    <div class="opts">
+      <label>Pages to read
+        <select id="max"><option value="6">6</option><option value="12" selected>12</option><option value="20">20</option><option value="30">30</option></select>
+      </label>
+      <label id="aiLabel" hidden><input type="checkbox" id="ai" checked> Write the summary with AI</label>
+      <button type="button" class="link" id="try">Try with example.com</button>
+    </div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <div id="results" hidden>
+    <div class="head">
+      <div>
+        <h2 id="siteName"></h2>
+        <p class="meta"><a id="siteLink" target="_blank" rel="noopener noreferrer"></a> <span id="stats"></span></p>
+      </div>
+      <div class="actions">
+        <button type="button" id="copy">Copy as JSON</button>
+        <button type="button" id="download">Download JSON</button>
+      </div>
+    </div>
+    <div class="layout">
+      <nav class="toc" aria-label="Sections">
+        <a href="#purpose">Purpose</a><a href="#services">Services</a><a href="#pages">Pages</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="sections">
+        <section id="purpose"><h3>Purpose</h3><div id="purposeBody"></div></section>
+        <section id="services"><h3>Services</h3><div id="servicesBody"></div></section>
+        <section id="pages"><h3>Pages</h3><div id="pagesBody"></div></section>
+        <section id="contact" class="contact"><h3>Contact</h3><div id="contactBody"></div></section>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
